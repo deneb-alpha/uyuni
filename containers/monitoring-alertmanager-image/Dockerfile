@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: MIT
 
 #!BuildTag: uyuni/monitoring-alertmanager:latest uyuni/monitoring-alertmanager:%%alertmanager_patch_version%%
+#!BuildName: uyuni-monitoring-alertmanager
 
 ARG BASE=registry.suse.com/bci/bci-base:16.0
 FROM $BASE
@@ -32,6 +33,8 @@ LABEL org.opensuse.reference="${REFERENCE_PREFIX}/monitoring-alertmanager:%%aler
 LABEL org.openbuildservice.disturl="%DISTURL%"
 # endlabelprefix
 LABEL org.uyuni.version="${PRODUCT_VERSION}"
+LABEL org.opencontainers.image.base.name="%BASE_REFNAME%"
+LABEL org.opencontainers.image.base.digest="%BASE_DIGEST%"
 
 ENTRYPOINT ["/usr/bin/prometheus-alertmanager"]
 EXPOSE 9093
